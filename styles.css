@@ -2,7 +2,6 @@ body{
     width: 100%;
     color: black;
     background-color: rgb(235, 122, 42);
-    text-align: center;
 }
 
 button{
@@ -15,20 +14,38 @@ button{
     font-weight: bolder;
     margin-top: 5%;
 }
-input{
-    width: 150px;
-    padding: 10px 10px 10px 10px;
+
+.box{
+    text-align: center;
+}
+.box input{
+    padding: 10px 10px;    
+}
+/* .radio-buttons{
+    margin-left: 20%;
+    margin-right: 20%;
+} */
+.radio-buttons input{
+    margin-left: 10%;
+}
+.radio-buttons{
+    margin-left: 20%;
+}
+.butt{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin-left: 50%;
 }
 .container{
     width: 60%;
     margin-left: 20%;
-    margin-right: 20%;
+    margin-right: 20%; 
 }
 
 
 @media (max-width:150px){
     .container{
-        text-align: center;
         width: 90%;
         margin-left: 5%;
         margin-right: 5%;

@@ -9,22 +9,35 @@
 </head>
 <body>
     <div class="container">
-        <h1>Registration number list</h1>
-        <label for="registration-number">Registration number: </label>
-        <br>
-        <br>
-        <div class="regNumber">
-            <form action="">
-                <input type="text" name="name" class="regNumberInput">
-            </form>
+        <div class="box">
+            <h1>Registration number list</h1>
+            <label for="registration-number">Registration number: </label>
+            <br>
+            <br>
+            <div class="regNumber">
+                <form action="">
+                    <input type="text" name="name" class="regNumberInput">
+                </form>
+            </div>
         </div>
         
         <br>
         <br>
-        <div>
-            <button class="primary-button addBtn">Add</button>
+        <div class="radio-buttons"> 
+            <form action="">
+                <span><input type="radio" id="rad1" name="radio" class="town"></span>
+                <label for="rad1">Cape Town</label>
+
+                <input type="radio" id="rad2" name="radio" class="town">
+                <label for="rad2">Stellenbosch</label>
+
+                <input type="radio" id="rad3" name="radio" class="town">
+                <label for="rad3">Paarl</label>
+                </form>
         </div>
-        <div>
+        <div class="butt">
+            <button class="primary-button addBtn">Add</button>
+        
            <button class="primary-button showBtn">Show</button> 
         </div>        
     </div>
