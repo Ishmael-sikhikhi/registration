@@ -25,7 +25,7 @@ input{
 }
 
 
-@media (max-width:662px){
+@media (max-width:150px){
     .regNumber{
         margin-left: 25%;
     }
