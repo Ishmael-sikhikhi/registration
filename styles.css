@@ -1,0 +1,40 @@
+body{
+    width: 100%;
+    color: black;
+    background-color: rgb(235, 122, 42);
+    text-align: center;
+}
+
+button{
+    width: 70px;
+    padding: 10px 10px 10px 10px;
+    border-radius: 10px;
+    background-color: darkblue;
+    color: white;
+    font-size: large;
+    font-weight: bolder;
+}
+input{
+    width: 150px;
+    padding: 10px 10px 10px 10px;
+}
+.container{
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+
+@media (max-width:662px){
+    .regNumber{
+        margin-left: 25%;
+    }
+    
+    .container{
+        text-align: ;
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+}
