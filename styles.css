@@ -3,6 +3,9 @@ body{
     color: black;
     background-color: rgb(235, 122, 42);
 }
+.error{
+    color: crimson;
+}
 
 button{
     width: 70px;
@@ -26,10 +29,20 @@ button{
     margin-right: 20%;
 } */
 .radio-buttons input{
+    margin-top: 10%;
     margin-left: 10%;
 }
 .radio-buttons{
     margin-left: 20%;
+}
+.sel{
+    text-align: center;
+    color: rgb(254, 254, 255);
+    /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
+    font-style: italic;
+    font-weight: bolder;
+    font-stretch: expanded;
+    font-size-adjust: inherit;
 }
 .butt{
     text-align: center;

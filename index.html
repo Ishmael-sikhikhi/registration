@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration-number</title>
@@ -12,26 +11,29 @@
         <div class="box">
             <h1>Registration number list</h1>
             <label for="registration-number">Registration number: </label>
+
+            <h4 class="error"></h4>
             <br>
             <br>
             <div class="regNumber">
                 <form action="">
-                    <input type="text" name="name" class="regNumberInput">
+                    <input type="text" class="regNumberInput">
                 </form>
             </div>
         </div>
         
         <br>
         <br>
+        <h1 class="sel">Please select town to view registration-number</h1>
         <div class="radio-buttons"> 
-            <form action="">
-                <span><input type="radio" id="rad1" name="radio" class="town"></span>
+            <form>
+                <input type="radio" id="rad1" name="radio" class="town" value="CA">
                 <label for="rad1">Cape Town</label>
 
-                <input type="radio" id="rad2" name="radio" class="town">
+                <input type="radio" id="rad2" name="radio" class="town" value="CL">
                 <label for="rad2">Stellenbosch</label>
 
-                <input type="radio" id="rad3" name="radio" class="town">
+                <input type="radio" id="rad3" name="radio" class="town" value="CJ">
                 <label for="rad3">Paarl</label>
                 </form>
         </div>
@@ -39,6 +41,8 @@
             <button class="primary-button addBtn">Add</button>
         
            <button class="primary-button showBtn">Show</button> 
+
+           <button class="primary-button reset">Reset</button>
         </div>        
     </div>
     <script src="./Factory-function/registration_numberFactory.js" charset="utf-8"></script>
