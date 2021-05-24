@@ -1,10 +1,10 @@
-//dom element referencing 
 var regNumber = document.querySelector('.regNumberInput')
 var town = document.querySelector('.town')
 var addBtn = document.querySelector('.addBtn')
 var showBtn = document.querySelector('.showBtn')
 var reset = document.querySelector('.reset')
 var error = document.querySelector('.error')
+var elements = document.querySelector('.elements')
 
 const regType1 = /[A-Z]{2} [0-9]{4,5}/
 const regType2 = /[A-Z]{2}  [0-9]{3} [0-9]{3}/
@@ -16,21 +16,25 @@ var regNumbers = []
 if(localStorage['reg-number']){
     regNumbers = JSON.parse(localStorage.getItem('reg-number'))
 }
-    
+const element = document.getElementById('myEle')    
 let registration = registrations(regNumbers)
 
 function addReg(){
     var regN = regNumber.value
-    if (!reg.match(regType1) || !reg.match(regType2) || !reg.match(regType3)){
-        error.innerHTML = registration.setReg(regN)
+    if (regN === ''){
+        error.innerHTML = "No"
     }
-   if (regN !== '') {  
+   if (regN !== '') {
         registration.setReg(regN)
-            alert(registration.getReg())
-              
+        var regDiv = document.createElement("BUTTON");
+        var input = document.createTextNode(regNumber.value)
+        regDiv.appendChild(input);
+        document.getElementById('myEle').appendChild(regDiv)
+
+          
    }
    else if (regN === ''){
-       alert(1)
+       
     }
 }
 

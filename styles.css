@@ -7,7 +7,7 @@ body{
     color: crimson;
 }
 
-button{
+.butt button{
     width: 70px;
     padding: 10px 10px 10px 10px;
     border-radius: 10px;
@@ -17,7 +17,14 @@ button{
     font-weight: bolder;
     margin-top: 5%;
 }
-
+#myEle{
+    width: fit-content;
+}
+#myEle button{
+    border-radius: 10px;
+    width: 150PX;
+    padding: 10px 10px 10px 10px;
+} 
 .box{
     text-align: center;
 }
