@@ -58,7 +58,10 @@ function addReg(){
           
    }
    else if (regN === ''){
-       
+        error.value = "Please enter vehicle registration number"
+        setTimeout(()=>{
+            error.value = ''
+        }, 4000)
     }
 }
 
@@ -66,18 +69,39 @@ function showRegForTown(){
     element.innerHTML = ''
     var theSelectTown = document.querySelector("input[name='radio']:checked");
     var storeDReg = registration.getRegList()
-    for(var i = 0; i < storeDReg.length; i++){
-        
-        if(storeDReg[i].startsWith(theSelectTown.value)){            
-            var regDiv = document.createElement("BUTTON");
-            var input = document.createTextNode(storeDReg[i])
-            regDiv.appendChild(input);
-            regDiv.classList.add('regCol')
-            document.getElementById('myEle').appendChild(regDiv)
+    if(theSelectTown){
+        for(var i = 0; i < storeDReg.length; i++){        
+            if(storeDReg[i].startsWith(theSelectTown.value)){            
+                var regDiv = document.createElement("BUTTON");
+                var input = document.createTextNode(storeDReg[i])
+                regDiv.appendChild(input);
+                regDiv.classList.add('regCol')
+                document.getElementById('myEle').appendChild(regDiv)
+            } 
+            else if(!storeDReg[i].startsWith(theSelectTown.value)){
+                setTimeout(()=>{
+                    error.innerHTML = "No registration the town"
+                    error.classList.add('error')
+                },0)
+                setTimeout(()=>{
+                    error.innerHTML = ''
+                    error.classList.remove('error')
+                }, 4000)
+            }      
         }
-      
+        uncheckRadioBtn() 
     }
-    uncheckRadioBtn()    
+    else{
+        setTimeout(()=>{
+            error.innerHTML = "Please select town"
+            error.classList.add('error')
+        },0)
+        setTimeout(()=>{
+            error.innerHTML = ''
+            error.classList.remove('error')
+        }, 4000)
+    }
+       
      
 }
 
