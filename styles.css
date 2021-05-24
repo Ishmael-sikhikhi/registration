@@ -1,7 +1,7 @@
 body{
     width: 100%;
     color: black;
-    background-color: rgb(235, 122, 42);
+    background-color: rgb(161, 185, 142);
 }
 .error{
     color: crimson;
@@ -17,14 +17,22 @@ body{
     font-weight: bolder;
     margin-top: 5%;
 }
+.ins{
+    color: #fff;
+}
 #myEle{
     width: fit-content;
 }
 #myEle button{
     border-radius: 10px;
+    border: solid orange;
+    background-color: #fff;
     width: 150PX;
     padding: 10px 10px 10px 10px;
 } 
+.regCol{
+    color: blue;
+}
 .box{
     text-align: center;
 }

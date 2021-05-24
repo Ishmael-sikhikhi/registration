@@ -9,12 +9,11 @@
 <body>
     <div class="container">
         <div class="box">
-            <h1>Registration number list</h1>
-            <label for="registration-number">Registration number: </label>
+            <h1>Registration number</h1>
+            <label for="registration-number" class="ins"><h3>Please registration number: </h3></label>
 
             <h4 class="error"></h4>
-            <br>
-            <br>
+            <br>          
            
             
             <div class="regNumber">
@@ -25,12 +24,14 @@
         </div>
         
         <br>
-        <br>
-        <section id="myEle">
-            <h1 class="sel">Added registration numbers</h1>
+        <br>        
+
+        <hr size="1px" width="100%" color=""> 
+        <section id="myEle" class="myElement">
+            
         </section>
         
-        <h1 class="sel">Please select town to view registration-number</h1>
+        <h1 class="sel">Please select town below to view registration-numbers</h1>
         <div class="radio-buttons"> 
             <form>
                 <input type="radio" id="rad1" name="radio" class="town" value="CA">
@@ -47,6 +48,8 @@
             <button class="primary-button addBtn">Add</button>
         
            <button class="primary-button showBtn">Show</button> 
+
+           <button class="primary-button allTowns">Show all</button>
 
            <button class="primary-button reset">Reset</button>
         </div>        
