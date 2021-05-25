@@ -11,6 +11,7 @@ const regType1 = /[A-Z]{2} [0-9]{4,5}/
 const regType2 = /[A-Z]{2} [0-9]{3} [0-9]{3}/
 const regType3 = /[A-Z]{2} [0-9]{3}[-]{1}[0-9]{3}/
 
+
 var  selectTown = ''
 var regNumbers = []
 if(localStorage['reg-number']){
@@ -20,7 +21,7 @@ const element = document.getElementById('myEle')
 let registration = registrations(regNumbers)
 
 function addReg(){
-    element.innerHTML = ''
+    // element.innerHTML = ''
     var regN = regNumber.value
     regN = regN.charAt(0).toUpperCase() + regN.charAt(1).toUpperCase() + regN.slice(2)
     console.log(regN)
@@ -35,7 +36,9 @@ function addReg(){
     }
    if (regN !== '') {
     // regN = regN.charAt(0).toUpperCase() + regN.charAt(1).toUpperCase() + regN.slice(2)
-    if (regN.match(regType1) || regN.match(regType2) || regN.match(regType3)){        
+    if (regN.match(regType1) || regN.match(regType2) || regN.match(regType3)){     
+                   
+            
             registration.setReg(regN)
             var regDiv = document.createElement("BUTTON");
             var input = document.createTextNode(registration.getReg())
@@ -43,9 +46,8 @@ function addReg(){
             regDiv.classList.add('regCol')
             document.getElementById('myEle').appendChild(regDiv)
             //push to localstorage
-            localStorage.setItem('reg-number',JSON.stringify(registration.getRegList()))
-            
-        }
+            localStorage.setItem('reg-number',JSON.stringify(registration.getRegList())) 
+    }
         else{
             setTimeout(()=> {
                 error.value = "Please enter vehicle registration number"
@@ -80,7 +82,7 @@ function showRegForTown(){
             } 
             else if(!storeDReg[i].startsWith(theSelectTown.value)){
                 setTimeout(()=>{
-                    error.innerHTML = "No registration the town"
+                    error.innerHTML = "No registration for the town"
                     error.classList.add('error')
                 },0)
                 setTimeout(()=>{
