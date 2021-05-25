@@ -7,9 +7,10 @@ var reset = document.querySelector('.reset')
 var error = document.querySelector('.error')
 var elements = document.querySelector('.myElement')
 
-const regType1 = /[A-Z]{2} [0-9]{4,5}/
-const regType2 = /[A-Z]{2} [0-9]{3} [0-9]{3}/
-const regType3 = /[A-Z]{2} [0-9]{3}[-]{1}[0-9]{3}/
+const regType1 = /^((CA|CJ|CL)\s([0-9]){5})$/
+const regType2 = /^((CA|CL|CJ)\s\d{3}\s\d{3})$/
+const regType3  =/^((CA|CL|CJ)\s\d{3}\-\d{3})$/
+    
 
 
 var  selectTown = ''
@@ -21,10 +22,11 @@ const element = document.getElementById('myEle')
 let registration = registrations(regNumbers)
 
 function addReg(){
+    
     // element.innerHTML = ''
-    var regN = regNumber.value
-    regN = regN.charAt(0).toUpperCase() + regN.charAt(1).toUpperCase() + regN.slice(2)
-    console.log(regN)
+    var regNu = regNumber.value
+    registration.setReg(regNu)
+    var regN = regNu.charAt(0).toUpperCase() + regNu.charAt(1).toUpperCase() + regNu.slice(2)
     if (regN === ''){
         setTimeout(()=> {
             error.value = "Please enter vehicle registration number"
@@ -36,10 +38,8 @@ function addReg(){
     }
    if (regN !== '') {
     // regN = regN.charAt(0).toUpperCase() + regN.charAt(1).toUpperCase() + regN.slice(2)
-    if (regN.match(regType1) || regN.match(regType2) || regN.match(regType3)){     
-                   
-            
-            registration.setReg(regN)
+    if (regN.match(regType1) || regN.match(regType2) || regN.match(regType3)){                  
+      
             var regDiv = document.createElement("BUTTON");
             var input = document.createTextNode(registration.getReg())
             regDiv.appendChild(input);
@@ -65,6 +65,7 @@ function addReg(){
             error.value = ''
         }, 4000)
     }
+    uncheckRadioBtn()
 }
 
 function showRegForTown(){
@@ -82,13 +83,13 @@ function showRegForTown(){
             } 
             else if(!storeDReg[i].startsWith(theSelectTown.value)){
                 setTimeout(()=>{
-                    error.innerHTML = "No registration for the town"
+                    error.innerHTML = "No registration number(s) for this town"
                     error.classList.add('error')
                 },0)
                 setTimeout(()=>{
                     error.innerHTML = ''
                     error.classList.remove('error')
-                }, 4000)
+                }, 6000)
             }      
         }
         uncheckRadioBtn() 
