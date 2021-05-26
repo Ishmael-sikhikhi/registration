@@ -35,6 +35,7 @@ function addReg(){
         },0)
         setTimeout(()=>{
             error.innerHTML = ''
+            resetEle()
         }, 4000)
     }
    else if (regN !== '') {
@@ -48,6 +49,7 @@ function addReg(){
             document.getElementById('myEle').appendChild(regDiv)
             //push to localstorage
             localStorage.setItem('reg-number',JSON.stringify(registration.getRegList())) 
+            resetEle()
     }
         else{
             setTimeout(()=> {
@@ -56,40 +58,56 @@ function addReg(){
             },0)
             setTimeout(()=>{
                 error.value = ''
+                resetEle()
             }, 4000)
         }
           
    }
-
+   regNumber.innerHTML = ''
     uncheckRadioBtn()
 }
 
 function showRegForTown(){
     element.innerHTML = ''
+    resetEle()
     var theSelectTown = document.querySelector("input[name='radio']:checked");
-    var storeDReg = registration.getRegList()
-    if(theSelectTown){
-        for(var i = 0; i < storeDReg.length; i++){        
-            if(storeDReg[i].startsWith(theSelectTown.value)){            
-                var regDiv = document.createElement("BUTTON");
-                var input = document.createTextNode(storeDReg[i])
-                regDiv.appendChild(input);
-                regDiv.classList.add('regCol')
-                document.getElementById('myEle').appendChild(regDiv)
-            } 
-            else if(!storeDReg[i].startsWith(theSelectTown.value)){
-                setTimeout(()=>{
-                    error.innerHTML = "No registration number(s) for this town"
-                    error.classList.add('error')
-                },0)
-                setTimeout(()=>{
-                    error.innerHTML = ''
-                    error.classList.remove('error')
-                }, 6000)
-            }      
+    if (registration.getRegList() !== null){
+        if(theSelectTown ){
+            var storeDReg = registration.getRegList()
+            for(var i = 0; i < storeDReg.length; i++){        
+                if(storeDReg[i].startsWith(theSelectTown.value)){            
+                    var regDiv = document.createElement("BUTTON");
+                    var input = document.createTextNode(storeDReg[i])
+                    regDiv.appendChild(input);
+                    regDiv.classList.add('regCol')
+                    document.getElementById('myEle').appendChild(regDiv)
+                } 
+                else if(!storeDReg[i].startsWith(theSelectTown.value)){
+                    setTimeout(()=>{
+                        error.innerHTML = "No registration number(s) for this town"
+                        error.classList.add('error')
+                    },0)
+                    setTimeout(()=>{
+                        error.innerHTML = ''
+                        error.classList.remove('error')
+                    }, 6000)
+                } 
+                    
+            }
+            uncheckRadioBtn() 
         }
-        uncheckRadioBtn() 
     }
+    
+    else if (registration.getRegList() === null && theSelectTown){
+        setTimeout(()=>{
+            error.innerHTML = "No registration number(s) on storage"
+            error.classList.add('error')
+        },0)
+        setTimeout(()=>{
+            error.innerHTML = ''
+            error.classList.remove('error')
+        }, 6000)
+    } 
     else{
         setTimeout(()=>{
             error.innerHTML = "Please select town"
@@ -103,12 +121,35 @@ function showRegForTown(){
        
      
 }
-
+function resetEle(){
+    return regNumber.value = ''    
+}
 function resetRegSorage(){
-    alert('Resetted')
-    localStorage.clear()
-    location.reload()
-    // uncheckRadioBtn()
+    element.innerHTML = ''
+    resetEle()
+    uncheckRadioBtn()
+    if (localStorage['reg-number']){
+        setTimeout(()=>{
+            
+            error.innerHTML = "Storage have been successfully resetted!"
+            error.classList.add('notification')
+        },0)
+        setTimeout(()=>{
+            localStorage.clear()
+            location.reload()
+            error.innerHTML = ''
+        }, 4000)
+    } 
+    else{
+        setTimeout(()=>{
+            error.innerHTML = "No registration on storage"
+            error.classList.add('error')
+        },0)
+        setTimeout(()=>{
+            error.innerHTML = ''
+            error.classList.remove('error')
+        }, 4000)
+    }   
 }
 
 function regNubersList(){
@@ -124,16 +165,29 @@ function uncheckRadioBtn(){
 
 function showAll(){
     element.innerHTML = ''
-    var storeDReg = registration.getRegList()
-    
-    for(var i = 0; i < storeDReg.length; i++){
-        var regDiv = document.createElement("BUTTON");
-            var input = document.createTextNode(storeDReg[i])
-            regDiv.appendChild(input);
-            regDiv.classList.add('regCol')
-            document.getElementById('myEle').appendChild(regDiv)
-    }
+    resetEle()
     uncheckRadioBtn()
+    
+    if (registration.getRegList() === null){
+        var storeDReg = registration.getRegList()
+        for(var i = 0; i < storeDReg.length; i++){
+            var regDiv = document.createElement("BUTTON");
+                var input = document.createTextNode(storeDReg[i])
+                regDiv.appendChild(input);
+                regDiv.classList.add('regCol')
+                document.getElementById('myEle').appendChild(regDiv)
+        }
+    }
+    else{
+        setTimeout(()=>{
+            error.innerHTML = "No registration on storage"
+            error.classList.add('error')
+        },0)
+        setTimeout(()=>{
+            error.innerHTML = ''
+            error.classList.remove('error')
+        }, 4000)
+    } 
 }
 
 addBtn.addEventListener('click', addReg)
