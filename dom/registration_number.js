@@ -39,7 +39,7 @@ function addReg(){
         }, 4000)
     }
    else if (regN !== '') {
-    // regN = regN.charAt(0).toUpperCase() + regN.charAt(1).toUpperCase() + regN.slice(2)
+         regN = regN.charAt(0).toUpperCase() + regN.charAt(1).toUpperCase() + regN.slice(2)
     if (regN.match(regType1) || regN.match(regType2) || regN.match(regType3)){                  
       
             var regDiv = document.createElement("BUTTON");
@@ -51,19 +51,29 @@ function addReg(){
             localStorage.setItem('reg-number',JSON.stringify(registration.getRegList())) 
             resetEle()
     }
-        else{
-            setTimeout(()=> {
-                error.value = "Please enter vehicle registration number"
-                error.classList.add('error')
-            },0)
-            setTimeout(()=>{
-                error.value = ''
-                resetEle()
-            }, 4000)
-        }
+     else { 
+        setTimeout(()=> {
+            error.value = "Registration number do not match the format"
+            error.classList.add('error')
+        },0)
+        setTimeout(()=>{
+            error.value = ''
+            resetEle()
+        }, 4000)
+     }   
           
    }
-   regNumber.innerHTML = ''
+   else {
+    setTimeout(()=> {
+        error.value = "Please enter vehicle registration number"
+        error.classList.add('error')
+    },0)
+    setTimeout(()=>{
+        error.value = ''
+        resetEle()
+    }, 4000)
+}
+   
     uncheckRadioBtn()
 }
 
@@ -71,9 +81,13 @@ function showRegForTown(){
     element.innerHTML = ''
     resetEle()
     var theSelectTown = document.querySelector("input[name='radio']:checked");
-    if (registration.getRegList() !== null){
-        if(theSelectTown ){
-            var storeDReg = registration.getRegList()
+    var storeDReg = registration.getRegList() || []
+    if(storeDReg.length === 0){
+            console.log('storage is empty')
+    }
+    if(theSelectTown ){
+            
+        if (storeDReg.length !== 0){
             for(var i = 0; i < storeDReg.length; i++){        
                 if(storeDReg[i].startsWith(theSelectTown.value)){            
                     var regDiv = document.createElement("BUTTON");
@@ -96,18 +110,20 @@ function showRegForTown(){
             }
             uncheckRadioBtn() 
         }
+        else if (storeDReg.length === 0){
+            setTimeout(()=>{
+                error.innerHTML = "No registration number(s) on storage"
+                error.classList.add('error')
+            },0)
+            setTimeout(()=>{
+                error.innerHTML = ''
+                error.classList.remove('error')
+            }, 6000)
+            uncheckRadioBtn()
+        } 
     }
     
-    else if (registration.getRegList() === null && theSelectTown){
-        setTimeout(()=>{
-            error.innerHTML = "No registration number(s) on storage"
-            error.classList.add('error')
-        },0)
-        setTimeout(()=>{
-            error.innerHTML = ''
-            error.classList.remove('error')
-        }, 6000)
-    } 
+   
     else{
         setTimeout(()=>{
             error.innerHTML = "Please select town"
@@ -164,21 +180,12 @@ function uncheckRadioBtn(){
 }
 
 function showAll(){
+    var storeDReg = registration.getRegList()
     element.innerHTML = ''
     resetEle()
     uncheckRadioBtn()
     
-    if (registration.getRegList() === null){
-        var storeDReg = registration.getRegList()
-        for(var i = 0; i < storeDReg.length; i++){
-            var regDiv = document.createElement("BUTTON");
-                var input = document.createTextNode(storeDReg[i])
-                regDiv.appendChild(input);
-                regDiv.classList.add('regCol')
-                document.getElementById('myEle').appendChild(regDiv)
-        }
-    }
-    else{
+    if(storeDReg.length === 0){
         setTimeout(()=>{
             error.innerHTML = "No registration on storage"
             error.classList.add('error')
@@ -188,6 +195,17 @@ function showAll(){
             error.classList.remove('error')
         }, 4000)
     } 
+
+    else if (storeDReg.length !== 0){
+        
+        for(var i = 0; i < storeDReg.length; i++){
+            var regDiv = document.createElement("BUTTON");
+                var input = document.createTextNode(storeDReg[i])
+                regDiv.appendChild(input);
+                regDiv.classList.add('regCol')
+                document.getElementById('myEle').appendChild(regDiv)
+        }
+    }    
 }
 
 addBtn.addEventListener('click', addReg)

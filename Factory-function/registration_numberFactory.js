@@ -10,12 +10,15 @@ function registrations(regStored){
     var regN = ''
     function setReg(reg){ 
         var theReg = reg.charAt(0).toUpperCase() + reg.charAt(1).toUpperCase() + reg.slice(2)
-        if ((theReg.match(regType1) || theReg.match(regType2) || theReg.match(regType3))  ){
-            regN = theReg
-            if (!regNumbers.includes(reg)){
-                regNumbers.push(reg);                
-            }
-        }      
+        if(theReg){
+            if ((theReg.match(regType1) || theReg.match(regType2) || theReg.match(regType3))  ){
+                regN = theReg
+                if (!regNumbers.includes(theReg)){
+                    regNumbers.push(theReg);                
+                }
+            } 
+        }
+             
     }
     function getReg(){
         return regN
