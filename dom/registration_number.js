@@ -7,6 +7,7 @@ var reset = document.querySelector('.reset')
 var error = document.querySelector('.error')
 var elements = document.querySelector('.myElement')
 
+
 const regType1 = /^((CA|CJ|CL)\s([0-9]){5})$/
 const regType2 = /^((CA|CL|CJ)\s\d{3}\s\d{3})$/
 const regType3  =/^((CA|CL|CJ)\s\d{3}\-\d{3})$/
@@ -29,14 +30,14 @@ function addReg(){
     var regN = regNu.charAt(0).toUpperCase() + regNu.charAt(1).toUpperCase() + regNu.slice(2)
     if (regN === ''){
         setTimeout(()=> {
-            error.value = "Please enter vehicle registration number"
+            error.innerHTML = "Please enter vehicle registration number"
             error.classList.add('error')
         },0)
         setTimeout(()=>{
-            error.value = ''
+            error.innerHTML = ''
         }, 4000)
     }
-   if (regN !== '') {
+   else if (regN !== '') {
     // regN = regN.charAt(0).toUpperCase() + regN.charAt(1).toUpperCase() + regN.slice(2)
     if (regN.match(regType1) || regN.match(regType2) || regN.match(regType3)){                  
       
@@ -59,12 +60,7 @@ function addReg(){
         }
           
    }
-   else if (regN === ''){
-        error.value = "Please enter vehicle registration number"
-        setTimeout(()=>{
-            error.value = ''
-        }, 4000)
-    }
+
     uncheckRadioBtn()
 }
 
