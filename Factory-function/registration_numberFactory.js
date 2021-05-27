@@ -2,9 +2,7 @@ function registrations(regStored){
     const regType1 = /^((CA|CJ|CL)\s([0-9]){5})$/
     const regType2 = /^((CA|CL|CJ)\s\d{3}\s\d{3})$/
     const regType3  =/^((CA|CL|CJ)\s\d{3}\-\d{3})$/
-
-    console.log('Test for regType1:'+regType1.test(regStored))
-    
+   
     var regNumbers = []
     regNumbers = regStored || []
     var regN = ''
@@ -20,9 +18,6 @@ function registrations(regStored){
         }
              
     }
-    function getReg(){
-        return regN
-    }
 
     function getRegList(){
         return regNumbers
@@ -30,7 +25,6 @@ function registrations(regStored){
 
     return {
         setReg,
-        getReg,
         getRegList,
     }
 }

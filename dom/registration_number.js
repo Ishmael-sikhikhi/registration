@@ -24,9 +24,9 @@ let registration = registrations(regNumbers)
 
 function addReg(){
     
-    // element.innerHTML = ''
+    element.innerHTML = ''
     var regNu = regNumber.value
-    registration.setReg(regNu)
+    
     var regN = regNu.charAt(0).toUpperCase() + regNu.charAt(1).toUpperCase() + regNu.slice(2)
     if (regN === ''){
         setTimeout(()=> {
@@ -41,15 +41,39 @@ function addReg(){
    else if (regN !== '') {
          regN = regN.charAt(0).toUpperCase() + regN.charAt(1).toUpperCase() + regN.slice(2)
     if (regN.match(regType1) || regN.match(regType2) || regN.match(regType3)){                  
-      
-            var regDiv = document.createElement("BUTTON");
-            var input = document.createTextNode(registration.getReg())
-            regDiv.appendChild(input);
-            regDiv.classList.add('regCol')
-            document.getElementById('myEle').appendChild(regDiv)
-            //push to localstorage
+        
+        if (!(registration.getRegList()).includes(regN)){
+            registration.setReg(regNu)
+            for(var i = 0; i < (registration.getRegList()).length; i++){
+            
+                var regDiv = document.createElement("BUTTON");
+                var input = document.createTextNode((registration.getRegList())[i])
+                regDiv.appendChild(input);
+                regDiv.classList.add('regCol')
+                document.getElementById('myEle').appendChild(regDiv)
+            }
             localStorage.setItem('reg-number',JSON.stringify(registration.getRegList())) 
-            resetEle()
+            resetEle()         
+        }
+        else {
+            setTimeout(()=> {
+                error.innerHTML = regN + " is already on the list list"
+                error.classList.add('error')
+            },0)
+            setTimeout(()=>{
+                error.innerHTML = ''
+                resetEle()
+            }, 6000)
+            for(var i = 0; i < (registration.getRegList()).length; i++){
+                var regDiv = document.createElement("BUTTON");
+                var input = document.createTextNode((registration.getRegList())[i])
+                regDiv.appendChild(input);
+                regDiv.classList.add('regCol')
+                document.getElementById('myEle').appendChild(regDiv)
+            }
+        }   
+            //push to localstorage
+            
     }
      else { 
         setTimeout(()=> {
@@ -87,7 +111,8 @@ function showRegForTown(){
     }
     if(theSelectTown ){
             
-        if (storeDReg.length !== 0){
+        if (storeDReg.length !== 0)
+        {
             for(var i = 0; i < storeDReg.length; i++){        
                 if(storeDReg[i].startsWith(theSelectTown.value)){            
                     var regDiv = document.createElement("BUTTON");
@@ -96,7 +121,8 @@ function showRegForTown(){
                     regDiv.classList.add('regCol')
                     document.getElementById('myEle').appendChild(regDiv)
                 } 
-                else if(!storeDReg[i].startsWith(theSelectTown.value)){
+                else
+                {
                     setTimeout(()=>{
                         error.innerHTML = "No registration number(s) for this town"
                         error.classList.add('error')
@@ -104,11 +130,12 @@ function showRegForTown(){
                     setTimeout(()=>{
                         error.innerHTML = ''
                         error.classList.remove('error')
+                        uncheckRadioBtn() 
                     }, 6000)
                 } 
                     
             }
-            uncheckRadioBtn() 
+            
         }
         else if (storeDReg.length === 0){
             setTimeout(()=>{
@@ -168,10 +195,6 @@ function resetRegSorage(){
     }   
 }
 
-function regNubersList(){
-
-}
-
 function uncheckRadioBtn(){
     document.getElementById("rad1").checked = false;
     document.getElementById("rad2").checked = false; 
@@ -200,10 +223,10 @@ function showAll(){
         
         for(var i = 0; i < storeDReg.length; i++){
             var regDiv = document.createElement("BUTTON");
-                var input = document.createTextNode(storeDReg[i])
-                regDiv.appendChild(input);
-                regDiv.classList.add('regCol')
-                document.getElementById('myEle').appendChild(regDiv)
+            var input = document.createTextNode(storeDReg[i])
+            regDiv.appendChild(input);
+            regDiv.classList.add('regCol')
+            document.getElementById('myEle').appendChild(regDiv)
         }
     }    
 }

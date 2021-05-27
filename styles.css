@@ -8,7 +8,7 @@ body{
 }
 
 .butt button{
-    width: 70px;
+    width: 150px;
     padding: 10px 10px 10px 10px;
     border-radius: 10px;
     background-color: rgb(81, 138, 165);
@@ -44,10 +44,6 @@ body{
 .box input{
     padding: 10px 10px;    
 }
-/* .radio-buttons{
-    margin-left: 20%;
-    margin-right: 20%;
-} */
 .radio-buttons input{
     margin-top: 10%;
     margin-left: 10%;
@@ -58,24 +54,38 @@ body{
 .sel{
     text-align: center;
     color: rgb(254, 254, 255);
-    /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
     font-style: italic;
     font-weight: bolder;
     font-stretch: expanded;
     font-size-adjust: inherit;
 }
 .butt{
-    text-align: center;
     display: flex;
-    flex-direction: column;
-    margin-left: 50%;
+    justify-content: space-between;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 .container{
     width: 60%;
     margin-left: 20%;
     margin-right: 20%; 
 }
-
+@media (max-width:761){
+    .radio-buttons{
+        display: block;
+        width: 20%;
+    }
+}
+@media (max-width: 450px){
+    .butt{
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        justify-content: space-between;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+}
 
 @media (max-width:150px){
     .container{
@@ -83,5 +93,4 @@ body{
         margin-left: 5%;
         margin-right: 5%;
     }
-
 }
