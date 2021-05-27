@@ -106,9 +106,7 @@ function showRegForTown(){
     resetEle()
     var theSelectTown = document.querySelector("input[name='radio']:checked");
     var storeDReg = registration.getRegList() || []
-    if(storeDReg.length === 0){
-            console.log('storage is empty')
-    }
+   
     if(theSelectTown ){
             
         if (storeDReg.length !== 0)
