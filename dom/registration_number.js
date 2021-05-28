@@ -101,6 +101,14 @@ function addReg(){
     uncheckRadioBtn()
 }
 
+for(var i = 0; i < (registration.getRegList()).length; i++){
+    var regDiv1 = document.createElement("BUTTON");
+    var input = document.createTextNode((registration.getRegList())[i])
+    regDiv1.appendChild(input);
+    regDiv1.classList.add('regCol')
+    document.getElementById('myEle').appendChild(regDiv1)
+}
+
 function showRegForTown(){
     element.innerHTML = ''
     resetEle()
@@ -118,6 +126,7 @@ function showRegForTown(){
                     regDiv.appendChild(input);
                     regDiv.classList.add('regCol')
                     document.getElementById('myEle').appendChild(regDiv)
+                    uncheckRadioBtn()
                 } 
                 else
                 {
