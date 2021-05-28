@@ -9,8 +9,8 @@ var elements = document.querySelector('.myElement')
 
 
 const regType1 = /^((CA|CJ|CL)\s([0-9]){5})$/
-const regType2 = /^((CA|CL|CJ)\s\d{3}\s\d{3})$/
-const regType3  =/^((CA|CL|CJ)\s\d{3}\-\d{3})$/
+const regType2 = /^((CA|CL|CJ)\s([0-9]){3}\s\d{3})$/
+const regType3  =/^((CA|CL|CJ)\s([0-9]){3}\-\d{3})$/
     
 
 
