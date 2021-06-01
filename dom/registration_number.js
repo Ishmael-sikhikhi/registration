@@ -155,19 +155,9 @@ function showRegForTown() {
         }
 
     }
-    else if (storeDReg.length === 0) {
-        setTimeout(() => {
-            error.innerHTML = "No registration number(s) on storage"
-            error.classList.add('error')
-        }, 0)
-        setTimeout(() => {
-            error.innerHTML = ''
-            error.classList.remove('error')
-        }, 6000)
-        uncheckRadioBtn()
-    }
+    
 
-    else {
+    else if (!theSelectTown){
         setTimeout(() => {
             error.innerHTML = "Please select town"
             error.classList.add('error')

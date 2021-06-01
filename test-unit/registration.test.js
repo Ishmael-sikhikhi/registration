@@ -90,11 +90,5 @@ describe('Registration number exercise', ()=>{
        
         assert.deepEqual([ 'CJ 878 555' ], registration.filterFunction('CJ'))
         })
-        // it('it should display Paarl registration if selected town is Paarl, ()=>{
-
-        // })
-        // it('it should display Stellenbosch registration if selected town is Stellenbosch', ()=>{
-
-        // })
     })
 })
