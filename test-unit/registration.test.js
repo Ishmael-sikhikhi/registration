@@ -68,7 +68,7 @@ describe('Registration number exercise', ()=>{
         assert.deepEqual(['CA 878 555','CA 878 565'],registration.filterFunction('CA') )
         })
 
-        it('it should display Cape Town registration if selected town is Cape Town', ()=>{
+        it('it should display Stellenbosch registration if selected town is Stellenbosch', ()=>{
             let registration = registrations()
         registration.setReg("cl 878 555")
         registration.setReg("cl 878 565")
@@ -79,7 +79,17 @@ describe('Registration number exercise', ()=>{
        
         assert.deepEqual(['CL 878 555', 'CL 878 565'], registration.filterFunction('CL'))
         })
-        
+        it('it should display Paarl registration if selected town is Paarl', ()=>{
+            let registration = registrations()
+        registration.setReg("cl 878 555")
+        registration.setReg("cl 878 565")
+        registration.setReg("cy 878 555")
+        registration.setReg("ca 878 576")
+        registration.setReg("cj 878 555")
+        registration.setReg("cj 878 555")
+       
+        assert.deepEqual([ 'CJ 878 555' ], registration.filterFunction('CJ'))
+        })
         // it('it should display Paarl registration if selected town is Paarl, ()=>{
 
         // })
