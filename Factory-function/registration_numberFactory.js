@@ -15,27 +15,29 @@ function registrations(regStored) {
                     regNumbers.push(theReg);
                 }
             }
+            else {
+                return "Wrong registration number"
+            }
         }
 
     }
-
 
     function getRegList() {
         return regNumbers
     }
     function filterFunction(town) {
-        var arrList = []
+        var arrayList = []
         for (var i = 0; i < regNumbers.length; i++) {
             if (regNumbers[i].startsWith(town)) {
-                arrList.push(regNumbers[i])
+                arrayList.push(regNumbers[i])
             }
         }
-        return arrList;
+        return arrayList;
     }
 
     return {
         setReg,
         getRegList,
         filterFunction,
-    }
+   }
 }
