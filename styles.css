@@ -76,6 +76,9 @@ body{
         width: 20%;
     }
 }
+.regNumberInput{
+    width: 220px;
+}
 @media (max-width: 450px){
     .butt{
         display: flex;
