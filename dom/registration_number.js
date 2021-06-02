@@ -83,7 +83,7 @@ function addReg() {
 
         }
         else {
-            alert("Codex")
+            
             setTimeout(() => {
                 error.innerHTML = "Registration number do not match the format"
                 error.classList.add('error')
