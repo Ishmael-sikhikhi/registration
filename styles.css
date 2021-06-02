@@ -1,7 +1,7 @@
 body{
     width: 100%;
     color: black;
-    background-color: rgb(161, 185, 142);
+    background-color: rgb(80, 129, 40);
 }
 .error{
     color: crimson;
@@ -81,6 +81,7 @@ body{
 }
  h4, h2{
     color: #fff;
+    
 }
 @media (max-width: 450px){
     .butt{
